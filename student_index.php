@@ -11,7 +11,7 @@
 ?>
 <html>
 <head>
-	<title>Drop Off Project Submission System</title>
+	<title>Student Drop Off Project Submission System</title>
 	<link rel="stylesheet" type="text/css" href="dropoff.css" />
 	<script src="jquery-1.11.0.min.js"></script>
 	<script type="text/javascript">
@@ -49,6 +49,11 @@
 	}
 	-->
 	</script>
+	<script>
+				  $(function() {
+				    $( "#datepicker_vii" ).datepicker();
+				  });
+				  </script>
 	<style>
 	#text_req {
 		display: none;
@@ -60,9 +65,18 @@
 		display: none;
 	}
 	</style>
+	<style>
+table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 2px solid black;
+}
+</style>
 </head>
 <body>
-	<h1>DropOff Student Dashboard</h1>
+<center><h1>DropOff Student Dashboard</h1>
 <?php
 	$logout_link = $_SESSION['PHP_SELF']."?task=logout";
 ?>
@@ -83,8 +97,7 @@
 <tr bgcolor="#ffffff">
 <td>Student:</td>
 <td>
-	<?php echo $_SESSION['dropoff_fn'].' '.$_SESSION['dropoff_ln']; ?>
-	<input type="hidden" name="user_id" value="<?php echo $user_id; ?>" />
+	<?php echo $u->username; ?>
 </td>
 </tr>
 <tr bgcolor="#ffffff">
@@ -133,8 +146,7 @@
 <tr bgcolor="#ffffff">
 <td>Student:</td>
 <td>
-	<?php echo $_SESSION['dropoff_fn'].' '.$_SESSION['dropoff_ln']; ?>
-	<input type="hidden" name="user_id" value="<?php echo $user_id; ?>" />
+	<?php echo $u->username; ?>
 </td>
 </tr>
 <tr bgcolor="#ffffff">
@@ -269,7 +281,7 @@ No <input name="notify" type="radio" value="No"<?php echo $nvalue['No']; ?> />
 <tr bgcolor="#ffffff">
 <td>Date of Birth:</td>
 <td>
-<input name="dob" type="text" value="<?php echo $u->dob; ?>" /></td>
+<input name="dob" type="text" id="datepicker_vii" value="<?php echo $u->dob; ?>" /></td>
 </tr>
 <tr bgcolor="#ffffff">
 <td>User Type:</td>
@@ -286,6 +298,6 @@ No <input name="notify" type="radio" value="No"<?php echo $nvalue['No']; ?> />
 </table>
 </form><!-- close dropoff_users form-->
 
-
+</center>
 </body>
 </html>

@@ -8,6 +8,7 @@
 <head>
 	<title>Drop Off Project Submission System</title>
 	<script type="text/javascript" src="tinymce/tinymce.min.js"></script>
+	<script type="text/javascript" src="tinymce/tinymce.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="dropoff.css" />
 	<script type="text/javascript">
 	<!--
@@ -30,8 +31,56 @@
 	    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
 	});
 	</script>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+	 <!--Calender-->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <!--Calender Script-->
+				  <script>
+				  $(function() {
+				    $( "#datepicker" ).datepicker();
+				  });
+				  </script>
+				  <script>
+				  $(function() {
+				    $( "#datepicker_ii" ).datepicker();
+				  });
+				  </script>
+				  <script>
+				  $(function() {
+				    $( "#datepicker_iii" ).datepicker();
+				  });
+				  </script>
+				  <script>
+				  $(function() {
+				    $( "#datepicker_iv" ).datepicker();
+				  });
+				  </script>
+				  <script>
+				  $(function() {
+				    $( "#datepicker_v" ).datepicker();
+				  });
+				  </script>
+				  		  <script>
+				  $(function() {
+				    $( "#datepicker_vi" ).datepicker();
+				  });
+				  </script>
+<style>
+table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 2px solid black;
+}
+</style>
+<script src="gen_validatorv4.js" type="text/javascript"></script>
 </head>
 <body>
+<center>
 <div id="wrapper">
 <h1>DropOff Administrative Dashboard</h1>
 <?php
@@ -40,7 +89,7 @@
 <a href="<?php echo $logout_link; ?>">Logout</a><br />
 <p>
 <?php
-	echo "<span style=\"color:red\">$message</span>";
+	echo "<h2><span style=\"color:red\">$message</span><h2>";
 ?>
 &nbsp;
 </p>
@@ -53,7 +102,7 @@
 		echo "<h3>Insert Course</h3>";
 	}
 ?>
-<form name="insert_dropoff_course" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+<form id= "insert_dropoff_course" name="insert_dropoff_course" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
 <?php
 	if ( $task == 'get_course_for_update' ) {
 		echo '<input type="hidden" name="task" value="update_dropoff_course" />'."\n";
@@ -63,7 +112,7 @@
 		echo '<input type="hidden" name="task" value="insert_dropoff_course" />';
 	}
 ?>
-<table bgcolor="#aaaaaa" cellspacing="1" cellpadding="3">
+<table bgcolor="#aaaaaa" border="1" border="1" border="1" cellspacing="1" cellpadding="3">
 <tr bgcolor="#ffffff">
 <td>Course Title:</td>
 <td>
@@ -92,12 +141,12 @@
 <tr bgcolor="#ffffff">
 <td>Start Date:</td>
 <td>
-<input name="start_date" type="text" value="<?php echo $c->start_date; ?>" /></td>
-</tr>
+<input name="start_date" type="text" id="datepicker" Su value="<?php echo $c->start_date; ?>" /></td>
+</tr> 
 <tr bgcolor="#ffffff">
 <td>End Date:</td>
 <td>
-<input name="end_date" type="text" value="<?php echo $c->end_date; ?>" /></td>
+<input name="end_date" type="text" id="datepicker_ii" value="<?php echo $c->end_date; ?>" /></td>
 </tr>
 <tr bgcolor="#ffffff">
 <td>Status:</td>
@@ -113,11 +162,14 @@
 </td>
 </tr>
 <tr bgcolor="#ffffff">
+<td><div class="g-recaptcha" data-sitekey="6LcxVf8SAAAAABLN4DkKdRtqKIt5fNzNg-e2-IhP"></div></td>
 <td colspan="2">
 <input name="submit" value="Submit" type="submit" /></td>
 </tr>
 </table>
 </form><!-- close dropoff_courses form-->
+
+
 
 <!-- dropoff_projects -->
 <?php 
@@ -138,7 +190,7 @@
 		echo '<input type="hidden" name="task" value="insert_dropoff_project" />';
 	}
 ?>
-<table bgcolor="#aaaaaa" cellspacing="1" cellpadding="3">
+<table bgcolor="#aaaaaa" border="1" border="1" cellspacing="1" cellpadding="3">
 <tr bgcolor="#ffffff">
 <td>Project Title:</td>
 <td>
@@ -166,22 +218,22 @@
 <tr bgcolor="#ffffff">
 <td>Due Date:</td>
 <td>
-<input name="due_date" type="text" value="<?php echo $p->due_date; ?>" /></td>
+<input name="due_date" type="text" id="datepicker_iii" value="<?php echo $p->due_date; ?>" /></td>
 </tr>
 <tr bgcolor="#ffffff">
 <td>Submit Start:</td>
 <td>
-<input name="submit_start" type="text" value="<?php echo $p->submit_start; ?>" /></td>
+<input name="submit_start" type="text" id="datepicker_iv" value="<?php echo $p->submit_start; ?>" /></td>
 </tr>
 <tr bgcolor="#ffffff">
 <td>Submit End:</td>
 <td>
-<input name="submit_end" type="text" value="<?php echo $p->submit_end; ?>" /></td>
+<input name="submit_end" type="text" id="datepicker_v" value="<?php echo $p->submit_end; ?>" /></td>
 </tr>
 <tr bgcolor="#ffffff">
 <td>Enroll Date</td>
 <td>
-<input name="enroll_date" type="text" value="<?php echo $p->enroll_date; ?>" /></td>
+<input name="enroll_date" type="text" id="datepicker_vi" value="<?php echo $p->enroll_date; ?>" /></td>
 </tr>
 <tr bgcolor="#ffffff">
 <td>Points:</td>
@@ -222,6 +274,7 @@
 </td>
 </tr>
 <tr bgcolor="#ffffff">
+	<td><div class="g-recaptcha_ii" data-sitekey="6LcxVf8SAAAAABLN4DkKdRtqKIt5fNzNg-e2-IhP"></div></td>
 <td colspan="2">
 <input name="submit" value="Submit" type="submit" /></td>
 </tr>
@@ -250,7 +303,7 @@
 	}
 	echo '<input type="hidden" name="user_id" value="'.$user_id.'" />';		
 ?>
-<table bgcolor="#aaaaaa" cellspacing="1" cellpadding="3">
+<table bgcolor="#aaaaaa" border="1" border="1" cellspacing="1" cellpadding="3">
 <tr bgcolor="#ffffff">
 <td>Lesson Title:</td>
 <td>
@@ -317,7 +370,7 @@
 		echo '<input type="hidden" name="task" value="insert_dropoff_user" />';
 	}
 ?>
-<table bgcolor="#aaaaaa" cellspacing="1" cellpadding="3">
+<table bgcolor="#aaaaaa" border="1" border="1" cellspacing="1" cellpadding="3">
 <tr bgcolor="#ffffff">
 <td>Username:</td>
 <td>
@@ -419,7 +472,7 @@ No <input name="notify" type="radio" value="No"<?php echo $nvalue['No']; ?> />
 <h3>Create Enrollment</h3>
 <form name="insert_dropoff_enrollment" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
 <input type="hidden" name="task" value="insert_dropoff_enrollment" />
-<table bgcolor="#aaaaaa" cellspacing="1" cellpadding="3">
+<table bgcolor="#aaaaaa" border="1" border="1" cellspacing="1" cellpadding="3">
 <tr bgcolor="#ffffff">
 <td>Student:</td>
 <td>
@@ -479,7 +532,7 @@ No <input name="notify" type="radio" value="No"<?php echo $nvalue['No']; ?> />
 	$mycourses_link = "$_SERVER[PHP_SELF]?task=get_courses&p=".$user_id;
 ?>
 <a href="<?php echo $mycourses_link; ?>">Show My Courses</a> | <a href="<?php echo $_SERVER[PHP_SELF]; ?>">Show All Courses</a> | <a href="<?php echo $active_link; ?>">Show Active Courses</a> | <a href="<?php echo $pending_link; ?>">Show Pending Courses</a> | <a href="<?php echo $archived_link; ?>">Show Archived Courses</a> 
-<table>
+<table border="1" >
 <tr>
 <th>Course Title</th><th>Author</th><th>Session Title</th><th>Description</th><th>Syllabus</th><th>Prerequisites</th><th>Start Date</th><th>End Date</th><th>Status</th><th>Delete Course</th><th>Enrolled</th>
 </tr>
@@ -538,6 +591,12 @@ No <input name="notify" type="radio" value="No"<?php echo $nvalue['No']; ?> />
 <tr>
 <th>Project Title</th><th>Description</th><th>Course</th><th>Author</th><th>Due Date</th><th>Submit Start</th><th>Submit End</th><th>Points</th><th>Status</th><th>Delete Project</th>
 </tr>
+<tr>
+<th>
+	<?php
+	$echo="project_title" ?>
+</th><th>Description</th><th>Course</th><th>Author</th><th>Due Date</th><th>Submit Start</th><th>Submit End</th><th>Points</th><th>Status</th><th>Delete Project</th>
+</tr>
 <?php
   while( $row = mysql_fetch_array($dop) ) {
   	$deleteproject_link = "<a href=\"$_SERVER[PHP_SELF]?task=delete_project&pid=$row[pid]\">Delete</a>";
@@ -560,6 +619,12 @@ No <input name="notify" type="radio" value="No"<?php echo $nvalue['No']; ?> />
 <tr>
 <th>Lesson Title</th><th>Lesson Content</th><th>Sequence</th><th>Course</th><th>Author</th><th>Status</th><th>Delete Lesson</th>
 </tr>
+<tr>
+<th>
+	<?php
+	$echo="lesson_title" ?>
+</th><th>Description</th><th>Course</th><th>Author</th><th>Due Date</th><th>Submit Start</th><th>Submit End</th>
+</tr>
 <?php
   while( $row = mysql_fetch_array($dol) ) {
   	$deletelesson_link = "<a href=\"$_SERVER[PHP_SELF]?task=delete_lesson&pid=$row[pid]\">Delete</a>";
@@ -573,5 +638,6 @@ No <input name="notify" type="radio" value="No"<?php echo $nvalue['No']; ?> />
 </div><!--close #bottom-->
 
 </div><!--close #wrapper-->
+</center>
 </body>
 </html>

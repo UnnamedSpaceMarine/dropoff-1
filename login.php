@@ -1,22 +1,26 @@
 <html>
 <head>
-	<title>News Project</title>
+	<title>Dropoff Login</title>
 	<style type="text/css">
 	body {
 		font-family: Helvetica, Arial, san-serif;
 	}
 	</style>
 </head>
-<body>
-<?php
+<body><h3><center>
+	<?php
 	if (!empty($_GET['message'])) {
 		echo "$_GET[message]<br />"; 
 	}
 ?>
+	<br>
+	Dropoff System Login
+	<br>
+	<br>
 <form action="auth_user.php" method="post">
-Username: <input type="text" name="username" /><br />
-Password: <input type="password" name="password" /><br />
-<input type="submit" value="login" />
+Username: <input type="text" name="username" align-"center"/><br /><br>
+Password: <input type="password" name="password" align-"center"/><br /><br>
+<input type="submit" value="login" /></center></h3>
 </form>
 </body>
 </html>
